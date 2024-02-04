@@ -22,9 +22,12 @@ def validate_and_execute():
 user_input = "" #assign an empty string to user_input
 while user_input != "exit":  #condition gets evaluated
     user_input = input("Hey user, enter a number of days and i will convert it to hours!\n")
-    print(type(user_input.split(",")))
-    print(user_input.split(","))
-    for num_of_days_element in user_input.split(","):
+    list_of_days = user_input.split(", ")
+    print(list_of_days)
+    print(type(list_of_days))
+    print(set(list_of_days))
+    print(type(set(list_of_days)))
+    for num_of_days_element in list_of_days:
         validate_and_execute()  #user is prompted for its input
 #function is called and input is validated and executed
 #second loop : check if exiit was typed in
@@ -38,5 +41,3 @@ while user_input != "exit":  #condition gets evaluated
 #do that ##### contition can be tue or false.
 #boolen data type have  two values True or False.
 
-
-#list --> [10, 20, 30, 40] 
