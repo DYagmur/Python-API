@@ -30,6 +30,7 @@ while user_input != "exit":  #condition gets evaluated
     print(days_and_unit)
     days_and_unit_dictionary = {"days": days_and_unit[0], "unit": days_and_unit[1]}
     print(days_and_unit_dictionary)
+    print(type(days_and_unit_dictionary))
     validate_and_execute()
     
 
