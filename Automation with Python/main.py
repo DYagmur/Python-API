@@ -5,12 +5,15 @@ product_list = inv_file["Sheet1"]
 
 products_per_supplier = {}
 total_value_per_supplier = {}
+products_under_10_inv ={}
 
 for product_row in range(2, product_list.max_row  + 1): 
     #start from row 2 to get headers and data
     supplier_name = product_list.cell(product_row, 4).value
     inventory = product_list.cell(product_row, 2).value
     price = product_list.cell(product_row, 3).value
+    product_num = product_list.cell(product_row,1).value
+    inventory_price = product_list.cell(product_row, 5)
 
     #calculation number of products per supplier.
     if supplier_name in products_per_supplier:
@@ -28,6 +31,19 @@ for product_row in range(2, product_list.max_row  + 1):
         
     else:
         total_value_per_supplier[supplier_name] = inventory * price
+        
+        
+    #add the product number to a list for each supplier who has <10
+    if inventory < 10:
+        products_under_10_inv[int(product_num)] = int(inventory)
+        
+    #add value for total inventory price
+    
+    inventory_price.value = inventory * price
 
-print(products_per_supplier)
-print(total_value_per_supplier)
+
+print(products_per_supplier)  
+print(total_value_per_supplier)  
+print(products_under_10_inv)    
+   
+inv_file.save("C:\Python-API\Automation with Python\inventory_with_total_value.xlsx")           
